@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Post from "../components/Post";
@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import TextField from "@mui/material/TextField";
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
 
 function OpenedPost() {
   // Get id from URL
@@ -21,6 +22,12 @@ function OpenedPost() {
   const { authState } = useContext(AuthContext);
   const [likes, setLikes] = useState([]);
   const createdAtDate = new Date(postObject.createdAt);
+  const containerRef = useRef();
+
+  // Scroll down to the bottom of the container when the comments list changes
+  useEffect(() => {
+    containerRef.current.scrollTop = containerRef.current.scrollHeight;
+  }, [comments]);
 
   const formattedCreatedAt = createdAtDate.toLocaleString("en-US", {
     hour12: false,
@@ -122,16 +129,22 @@ function OpenedPost() {
         />
       )}
       <div className="comment-section">
-        <div className="comments">
+        <div className="comments" ref={containerRef}>
           {comments.map((comment, key) => {
             console.log(comment);
             return (
               <div className="comment" key={key}>
-                <div className="header">
-                  <h3>{comment.username}</h3>
+                <div className="profile-picture">
+                  <Avatar alt="Remy Sharp" src="" />
                 </div>
-                <div className="body">
-                  <p>{comment.commentContent}</p>
+
+                <div className="name-and-comment">
+                  <div className="header">
+                    <h3>@{comment.username}</h3>
+                  </div>
+                  <div className="body">
+                    <p>{comment.commentContent}</p>
+                  </div>
                 </div>
                 <div className="footer">
                   {/* Delete button is displayed only if username matches with the comment author's username */}

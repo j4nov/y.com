@@ -6,6 +6,7 @@
     margin: 20px 5px;
     display: flex;
     flex-direction: column;
+    background-color: var(--periwinkle);
 }
 
 .comments {
@@ -16,45 +17,79 @@
 
 .comment {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 80%;
     margin: 10px auto;
-    border-radius: 10px;
-    border: 2px solid var(--periwinkle)
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid var(--zaffre);
+    background-color: white;
+}
+
+.comment .profile-picture {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment .name-and-comment {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
 }
 
 .comment .header {
-    height: 40px;
     display: flex;
     align-items: center;
-
+    margin: 5px;
 }
 
 .comment .header h3 {
-    margin: 0 20px;
+    margin: 0;
     font-weight: 500;
     font-size: 16px;
 
 }
 
 .comment .body {
+    width: 100%;
     text-align: justify;
+    margin: 0 5px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    word-wrap: break-word;
 }
 
 .comment .body p {
-    margin: 0 20px;
+    margin: 0;
+    margin: 0;
+}
+
+.comment .footer {
+    height: 60%;
+    width: 15%;
+    margin: auto auto;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 
 .add-comment {
+    padding: 10px;
+    width: 80%;
     margin: auto auto 10px auto;
     display: flex;
     align-items: center;
-    width: 80%;
+    background-color: white;
+    border: 2px solid var(--zaffre);
+    border-radius: 5px;
 }
 
 .comment-section .add-comment input {
     height: 100%;
-    margin: 0 10px;
+    margin: 0;
     margin-bottom: 10px;
     width: calc(100% - 20px); /* Adjust the width to fit within the container */
     position: sticky;
