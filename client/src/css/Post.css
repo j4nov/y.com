@@ -1,0 +1,58 @@
+.post {
+    width: 40vw;
+    max-height: 60vh;
+    border: 1px solid var(--electric-indigo);
+    border-radius: 10px;
+    margin: 20px auto;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.post .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--electric-indigo);
+    border-radius: 7px 7px 0 0;
+}
+
+.user {
+    font-size: 16px;
+    display: flex;
+    text-align: left;
+}
+
+.header p {
+    margin: 10px;
+    color: white;
+}
+
+.content {
+    font-size: 14px;
+}
+
+.body {
+    text-align: center;
+    cursor: pointer;
+}
+
+.body h2 {
+    margin: 5px auto;
+    font-weight: 500;
+}
+
+.post-buttons {
+    display: flex;
+    margin: 0 10px;
+    justify-content: space-between;
+}
+
+.post-buttons button {
+    width: 50px;
+    margin: 0;
+    border-radius: 20px;
+    border: 0px;
+    color: white;
+    cursor: pointer;
+    background-color: var(--electric-indigo);
+    padding: 10px;
+}
