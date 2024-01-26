@@ -21,24 +21,12 @@ function OpenedPost() {
   const [newComment, setNewComment] = useState("");
   const { authState } = useContext(AuthContext);
   const [likes, setLikes] = useState([]);
-  const createdAtDate = new Date(postObject.createdAt);
   const containerRef = useRef();
 
   // Scroll down to the bottom of the container when the comments list changes
   useEffect(() => {
     containerRef.current.scrollTop = containerRef.current.scrollHeight;
   }, [comments]);
-
-  const formattedCreatedAt = createdAtDate.toLocaleString("en-US", {
-    hour12: false,
-    timeZone: "UTC",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-  });
 
   const addComment = () => {
     axios
@@ -123,7 +111,7 @@ function OpenedPost() {
           title={postObject.title}
           content={postObject.postContent}
           username={postObject.username}
-          date={formattedCreatedAt}
+          date={postObject.createdAt}
           id={id}
           likes={likes}
         />
@@ -169,10 +157,11 @@ function OpenedPost() {
           <TextField
             fullWidth
             value={newComment}
+            id="outlined-multiline-flexible"
             label="Comment"
-            id="fullWidth"
-            placeholder="Add comment..."
             autoComplete="off"
+            multiline
+            maxRows={4}
             onChange={(event) => {
               setNewComment(event.target.value);
             }}

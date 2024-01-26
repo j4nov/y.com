@@ -1,14 +1,17 @@
 .post {
     width: 40vw;
-    max-height: 60vh;
-    border: 1px solid var(--electric-indigo);
+    min-height: 20vh;
+    border: 2px solid var(--electric-indigo);
     border-radius: 10px;
     margin: 20px auto;
     background-color: white;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
 .post .header {
+    height: 40px;
     display: flex;
     justify-content: space-between;
     background-color: var(--electric-indigo);
@@ -26,33 +29,34 @@
     color: white;
 }
 
-.content {
-    font-size: 14px;
-}
 
-.body {
+.post .body {
+    width: 80%;
+    margin: 10px auto;
     text-align: center;
     cursor: pointer;
+    height: 80%;
 }
 
-.body h2 {
-    margin: 5px auto;
+.post .body h2 {
+    padding: 10px;
+    margin: auto;
     font-weight: 500;
 }
 
+.post .body p {
+    padding: 10px;
+    margin: auto;
+    font-weight: 200;
+    font-size: 18px;
+}
+
 .post-buttons {
+    padding: 20px;
+    height: 50px;
     display: flex;
-    margin: 0 10px;
+    margin-top: auto;
+    margin-bottom: 0;
     justify-content: space-between;
 }
 
-.post-buttons button {
-    width: 50px;
-    margin: 0;
-    border-radius: 20px;
-    border: 0px;
-    color: white;
-    cursor: pointer;
-    background-color: var(--electric-indigo);
-    padding: 10px;
-}
