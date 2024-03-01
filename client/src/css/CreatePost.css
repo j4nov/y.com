@@ -1,60 +1,44 @@
 .create-post-body {
     width: 100vw;
+    height: 90vh;
     display: flex;
     justify-content: center;
 }
 
 .create-post {
-    margin: 10px;
-    width: 60vw;
-    height: 60vw;
+    margin: 5%;
+    width: 50vw;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     background-color: white;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
-.create-post label {
-    display: flex;
+.create-post p {
     text-align: left;
-    margin: 5px;
-    width: 80%;
-    margin: 10px auto;
-    font-size: 16px;
-}
-
-.create-post span {
-    color: red;
-}
-
-.create-post .header {
-    border-radius: 7px 7px 0 0;
-    color: black;
-    font-weight: 400;
-    margin: 0;
-    display: flex;
-    padding: 10px;
 }
 
 .create-post .form {
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 10px;
+
 }
 
 .create-post input {
     width: 80%;
-    margin: auto;
-    height: 40px;
     border-radius: 5px;
-    border: 1px solid var(--light-gray);
     font-size: 16px;
 }
 
 .create-post button {
-    width: 82%;
+    width: 80%;
     border-radius: 10px;
     border: 0px;
     color: white;

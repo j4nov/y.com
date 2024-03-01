@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext, useCallback } from "react";
 import React from "react";
 import "../css/CommentSection.css";
 import axios from "axios";
@@ -30,14 +30,14 @@ function CommentSection(data) {
 
   // Send comment when key is pressed
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" && isInputValid) {
+    if (e.key === "Enter" && newComment.length > 5) {
       addComment();
     }
   };
 
   // GET data for post and comments
   // Wait for all data to fetch before display it
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const [commentsResponse] = await Promise.all([
         axios.get(`http://localhost:3001/comments/${data.id}`),
@@ -46,7 +46,11 @@ function CommentSection(data) {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }, [data.id]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   // Add comment function
   const addComment = () => {
@@ -80,10 +84,6 @@ function CommentSection(data) {
         }
       });
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   // Delete comment
   const deleteComment = (id) => {

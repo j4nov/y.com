@@ -1,12 +1,13 @@
 import React from "react";
 import "../css/NavigationMenu.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import { useContext } from "react";
+import LoginButton from "./Buttons/LoginButton";
+import RegisterButton from "./Buttons/RegisterButton";
 
 function NavigationMenu() {
   const authState = useContext(AuthContext);
-  console.log(authState);
 
   // Log out function
   const logout = () => {
@@ -26,14 +27,10 @@ function NavigationMenu() {
         {!authState.authState.status ? (
           <>
             <li>
-              <Link to="/login">
-                <button className="login-button">Login</button>
-              </Link>
+              <LoginButton />
             </li>
             <li>
-              <Link to="/registration" className="registration-button">
-                Registration
-              </Link>
+              <RegisterButton />
             </li>
           </>
         ) : (

@@ -1,9 +1,7 @@
-import { React, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { React } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Post from "../components/Post";
-import { AuthContext } from "../helpers/AuthContext";
 import Banner from "../components/ProfilePageComponents/Banner";
 import ProfileDescription from "../components/ProfilePageComponents/ProfileDescription";
 import PostsWindow from "../components/ProfilePageComponents/PostsWindow";
@@ -13,8 +11,6 @@ function ProfilePage() {
   let { id } = useParams();
   const [username, setUsername] = useState("");
   const [listOfPosts, setListOfPosts] = useState([]);
-  const { authState } = useContext(AuthContext);
-  let navigate = useNavigate();
 
   // Render page once when loaded
   // Make GET request
