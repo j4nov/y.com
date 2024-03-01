@@ -5,17 +5,23 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 function CreatePost() {
   const { authState } = useContext(AuthContext);
   let navigate = useNavigate();
+
   // Create initial values object for fields
   const initialValues = {
     title: "",
     postContent: "",
-    username: authState.username,
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      navigate("/login");
+    }
+  }, []);
 
   const validationSchema = Yup.object().shape({
     // Title should be string and it should be required
@@ -26,39 +32,45 @@ function CreatePost() {
 
   // On submit POST data
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/posts", data).then((response) => {
-      navigate("/");
-    });
+    axios
+      .post("http://localhost:3001/posts", data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        navigate("/");
+      });
   };
 
   return (
-    <div className="create-post">
-      <h2 className="header">Create a post</h2>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={validationSchema}
-      >
-        <Form className="form">
-          <label>Title: </label>
-          <ErrorMessage name="title" component="span" />
-          <Field
-            autoComplete="off"
-            id="inputCreatePost"
-            name="title"
-            placeholder="(Ex. Hello world!)"
-          />
-          <label>Post: </label>
-          <ErrorMessage name="postContent" component="span" />
-          <Field
-            autoComplete="off"
-            id="inputCreatePost"
-            name="postContent"
-            placeholder="Type here..."
-          />
-          <button type="submit">Create post</button>
-        </Form>
-      </Formik>
+    <div className="create-post-body">
+      <div className="create-post">
+        <h2 className="header">Create a post</h2>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validationSchema={validationSchema}
+        >
+          <Form className="form">
+            <label>Title: </label>
+            <ErrorMessage name="title" component="span" />
+            <Field
+              autoComplete="off"
+              id="inputCreatePost"
+              name="title"
+              placeholder="(Ex. Hello world!)"
+            />
+            <label>Post: </label>
+            <ErrorMessage name="postContent" component="span" />
+            <Field
+              autoComplete="off"
+              id="inputCreatePost"
+              name="postContent"
+              placeholder="Type here..."
+            />
+            <button type="submit">Create post</button>
+          </Form>
+        </Formik>
+      </div>
     </div>
   );
 }

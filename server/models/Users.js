@@ -23,6 +23,12 @@ module.exports = (sequelize, Datatypes) => {
       // If post is deleted then all likes related to this post is also deleted
       onDelete: "cascade",
     });
+
+    // User has many posts
+    Users.hasMany(models.Posts, {
+      // If post is deleted then all likes related to this post is also deleted
+      onDelete: "cascade",
+    });
   };
 
   // Return users object

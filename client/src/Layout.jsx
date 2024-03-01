@@ -5,14 +5,7 @@ const Layout = () => {
   return (
     <>
       <NavigationMenu />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   );
 };

@@ -1,0 +1,9 @@
+.profile-page {
+    width: 100vw;
+}
+
+.user-body {
+    margin: 0 10px;
+    background-color: white;
+    border-radius: 10px;
+}

@@ -1,0 +1,5 @@
+.posts-window {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    padding: 50px;
+}

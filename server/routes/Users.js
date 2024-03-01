@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
   });
 });
 
-// Logging in logic
+// Login logic
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   // Check if username is in database by going to Users table and searching username in username column
@@ -45,6 +45,38 @@ router.post("/login", async (req, res) => {
 // Check if token is valid
 router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
+});
+
+// Get data about user
+router.get("/info/:id", async (req, res) => {
+  const id = req.params.id;
+  // Get all data except password
+  const info = await Users.findByPk(id, {
+    attributes: { exclude: ["password"] },
+  });
+  res.json(info);
+});
+
+// Change password
+router.put("/change-password", validateToken, async (req, res) => {
+  // Get old and new password
+  const { oldPassword, newPassword } = req.body;
+  // Get user object from table by searching with username from validateToken
+  const user = await Users.findOne({ where: { username: req.user.username } });
+  // Compare password in table with the old password
+  bcrypt.compare(oldPassword, user.password).then((match) => {
+    // If match is false, then return error, otherwise not
+    if (!match) return res.json({ error: "Wrong password entered!" });
+
+    bcrypt.hash(newPassword, 10).then((hash) => {
+      // Pass hash value as a new password to the table
+      Users.update(
+        { password: hash },
+        { where: { username: req.user.username } }
+      );
+      res.json("Success");
+    });
+  });
 });
 
 module.exports = router;

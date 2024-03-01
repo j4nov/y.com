@@ -6,11 +6,13 @@
   --dark-spring-green: #1C7C54;
   --sage: #BCB382;
   --zaffre: #0D21A1;
-  --light-gray: #E7E7E7
+  --light-gray: #f5f5f5;
+  --light-blue: #94DFFF;
+  --text-blue: #6CD3FF
 }
 
 .App {
-  background-color: white;
+  background-color: var(--light-gray);
 }
 
 h1, h2, h3, p, a, label {

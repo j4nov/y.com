@@ -18,9 +18,7 @@ function Registration() {
 
   // API request function
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
-    });
+    axios.post("http://localhost:3001/auth", data).then(() => {});
   };
   return (
     <div>
