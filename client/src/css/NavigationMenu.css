@@ -4,23 +4,89 @@ body {
 }
 
 li {
-    display: inline;
+    list-style: none;
+    display: flex;
     padding: 0 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 ul {
     display: flex;
     padding: 0;
+    justify-content: space-between;
 }
 
 nav {
-    margin: 0;
-    padding: 10px;
-    background-color: var(--electric-indigo);
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px;
+    border-radius: 10px;
+    padding: 5px 30px;
+    background-color: white;
 }
 
 a {
     text-decoration: none;
     color: white;
+    cursor: pointer;
+}
+
+nav .create-post-button {
+    height: 50px;
+    width: 150px;
+    color: var(--text-blue);
+    background-color: white;
+    font-size: 20px;
+    border: 3px solid var(--light-blue);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+nav .logo {
+    display: flex;
+    margin: 0;
+    font-size: 36px;
+    color: var(--text-blue);
+    align-items: center;
+    cursor: pointer;
+}
+
+nav .home-button {
+    color: black;
+    font-size: 20px;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+nav .logout-button {
+    color: black;
+    font-size: 20px;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+nav .profile-button {
+    color: black;
+    font-size: 20px;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+nav .login-button {
+    height: 50px;
+    width: 150px;
+    color: var(--text-blue);
+    background-color: white;
+    font-size: 20px;
+    border: 3px solid var(--light-blue);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+nav .registration-button {
+    color: black;
+    font-size: 20px;
+    font-weight: 100;
     cursor: pointer;
 }

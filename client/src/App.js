@@ -10,6 +10,9 @@ import { AuthContext } from "./helpers/AuthContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NoPage from "./pages/NoPage";
+import ProfilePage from "./pages/ProfilePage";
+import ChangePassword from "./pages/ChangePassword";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -36,7 +39,7 @@ function App() {
           });
         }
       });
-  }, []);
+  });
 
   return (
     <div className="App">
@@ -44,11 +47,17 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
+              {authState.status ? (
+                <Route index element={<Home />} />
+              ) : (
+                <Route index element={<LandingPage />} />
+              )}
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/post/:id" element={<OpenedPost />} />
               <Route path="/login" element={<Login />} />
               <Route path="/registration" element={<Registration />} />
+              <Route path="/profile/:id" element={<ProfilePage />} />
+              <Route path="/change-password" element={<ChangePassword />} />
               <Route path="*" element={<NoPage />} />
             </Route>
           </Routes>

@@ -1,18 +1,17 @@
 .comment-section {
-    width: 40vw;
-    height: 80vh;
     border-radius: 10px;
-    border: 2px solid var(--electric-indigo);
-    margin: 20px 5px;
+    margin: 5px;
     display: flex;
     flex-direction: column;
-    background-color: var(--periwinkle);
+    background-color: white;
+    height: 60vh;
 }
 
 .comments {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 .comment {
@@ -22,7 +21,7 @@
     margin: 10px auto;
     padding: 10px;
     border-radius: 20px;
-    border: 2px solid var(--zaffre);
+    border: 1px solid var(--light-gray);
     background-color: white;
 }
 
@@ -81,9 +80,7 @@
     width: 80%;
     margin: auto auto 10px auto;
     display: flex;
-    align-items: center;
     background-color: white;
-    border: 2px solid var(--zaffre);
     border-radius: 5px;
 }
 
@@ -95,8 +92,8 @@
     position: sticky;
 }
 
-.comment-section .add-comment button {
+.comment-section .add-comment Button {
     width: 20%;
-    height: 100%;
+    height: 56px;
     margin: 0 0 0 10px;
 }

@@ -3,6 +3,8 @@ import "../css/NavigationMenu.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import { useContext } from "react";
+import LoginButton from "./Buttons/LoginButton";
+import RegisterButton from "./Buttons/RegisterButton";
 
 function NavigationMenu() {
   const authState = useContext(AuthContext);
@@ -18,29 +20,43 @@ function NavigationMenu() {
 
   return (
     <nav>
+      <Link to="/" className="logo">
+        <h1 className="logo">y.com</h1>
+      </Link>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/create-post">Create a post</Link>
-        </li>
         {!authState.authState.status ? (
           <>
             <li>
-              <Link to="/login">Login</Link>
+              <LoginButton />
             </li>
             <li>
-              <Link to="/registration">Registration</Link>
+              <RegisterButton />
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link onClick={logout}>Logout</Link>
+              <Link to="/" className="home-button">
+                Home
+              </Link>
             </li>
             <li>
-              <Link>{authState.authState.username}</Link>
+              <Link to="/create-post">
+                <button className="create-post-button">Create Post</button>
+              </Link>
+            </li>
+            <li>
+              <Link onClick={logout} to={"/"} className="logout-button">
+                Logout
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={`/profile/${authState.authState.id}`}
+                className="profile-button"
+              >
+                {authState.authState.username}
+              </Link>
             </li>
           </>
         )}

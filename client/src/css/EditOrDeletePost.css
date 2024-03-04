@@ -1,0 +1,38 @@
+.popover {
+    position: absolute;
+    padding: 20px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 24;
+    width: 400px;
+    min-height: 340px;
+    z-index: 5;
+    border-radius: 10px;
+}
+
+.popover h2 {
+    text-align: center;
+}
+
+.popover .input {
+    padding: 20px;
+}
+
+.popover .buttons {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    backdrop-filter: blur(5px); /* Apply blur effect */
+    z-index: 2; /* Below the popup */
+  }

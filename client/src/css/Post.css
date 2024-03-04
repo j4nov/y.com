@@ -1,58 +1,89 @@
 .post {
-    width: 40vw;
-    max-height: 60vh;
-    border: 1px solid var(--electric-indigo);
+    max-width: 60vw;
+    min-width: 30vw;
     border-radius: 10px;
-    margin: 20px auto;
+    margin: 5px;
     background-color: white;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
 }
 
 .post .header {
     display: flex;
-    justify-content: space-between;
-    background-color: var(--electric-indigo);
-    border-radius: 7px 7px 0 0;
+    padding: 10px;
 }
 
-.user {
-    font-size: 16px;
+.post .profile-pic {
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    background-color: var(--light-gray);
+    border-radius: 50%;
+}
+
+.post .header .name-and-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+}
+
+.post .header .name-and-date .date {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.post .header .name-and-date .user {
+    color: black;
+    margin: 10px;
+    font-size: 24px;
+    font-weight: 500;
     display: flex;
     text-align: left;
+    margin: 5px 0;
 }
 
-.header p {
-    margin: 10px;
-    color: white;
-}
-
-.content {
-    font-size: 14px;
-}
-
-.body {
+.post .post-body {
+    width: 80%;
+    margin: 10px auto;
     text-align: center;
     cursor: pointer;
+    height: 80%;
+    overflow-wrap: break-word;
 }
 
-.body h2 {
-    margin: 5px auto;
+.post .post-body h2 {
+    padding: 10px;
+    margin: auto;
     font-weight: 500;
 }
 
-.post-buttons {
-    display: flex;
-    margin: 0 10px;
-    justify-content: space-between;
+.post .post-body p {
+    padding: 10px;
+    margin: auto;
+    font-weight: 200;
+    font-size: 18px;
 }
 
-.post-buttons button {
-    width: 50px;
+.post .footer {
+    padding: 20px;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 0;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.post .footer .likes {
+    display: flex;
+    align-items: center;
     margin: 0;
-    border-radius: 20px;
-    border: 0px;
-    color: white;
-    cursor: pointer;
-    background-color: var(--electric-indigo);
-    padding: 10px;
+}
+
+.post .footer .likes p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
 }

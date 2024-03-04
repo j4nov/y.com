@@ -1,71 +1,55 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import "../css/CreatePost.css";
-import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import TextField from "@mui/material/TextField";
 
 function CreatePost() {
   let navigate = useNavigate();
-  // Create initial values object for fields
-  const initialValues = {
-    title: "",
-    postContent: "",
-    username: "",
-  };
 
-  const validationSchema = Yup.object().shape({
-    // Title should be string and it should be required
-    title: Yup.string().required("You must input a title!"),
-    // Post content should be string and is required
-    postContent: Yup.string().required("You must input a content"),
-    // Username should be string and length should be at least 5 letters and maximum of 15 letters and is required
-    username: Yup.string().min(5).max(15).required(),
-  });
+  useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   // On submit POST data
-  const onSubmit = (data) => {
-    axios.post("http://localhost:3001/posts", data).then((response) => {
-      navigate("/");
-    });
+  const onSubmit = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+
+    axios
+      .post("http://localhost:3001/posts", data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error creating post:", error);
+      });
   };
 
   return (
-    <div className="create-post">
-      <h2 className="header">Create a post</h2>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={validationSchema}
-      >
-        <Form className="form">
-          <label>Title: </label>
-          <ErrorMessage name="title" component="span" />
-          <Field
-            autoComplete="off"
-            id="inputCreatePost"
-            name="title"
-            placeholder="(Ex. Hello world!)"
-          />
-          <label>Post: </label>
-          <ErrorMessage name="postContent" component="span" />
-          <Field
-            autoComplete="off"
-            id="inputCreatePost"
+    <div className="create-post-body">
+      <div className="create-post">
+        <form className="form" onSubmit={onSubmit}>
+          <p>Post Title</p>
+          <TextField fullWidth label="Title" name="title" id="title" />
+          <p>Post Content</p>
+          <TextField
+            fullWidth
             name="postContent"
-            placeholder="Type here..."
-          />
-          <label>Username: </label>
-          <ErrorMessage name="username" component="span" />
-          <Field
-            autoComplete="off"
-            id="inputCreatePost"
-            name="username"
-            placeholder="(Ex. John...)"
+            id="postContent"
+            label="Post"
+            multiline
+            rows={6}
           />
           <button type="submit">Create post</button>
-        </Form>
-      </Formik>
+        </form>
+      </div>
     </div>
   );
 }

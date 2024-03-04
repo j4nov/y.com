@@ -1,6 +1,24 @@
+.home-body {
+    display: flex;
+    justify-content: center;
+}
+
 .posts {
     display: flex;
     flex-direction: column-reverse;
     width: 60vw;
-    justify-content: center;
+}
+
+.links {
+    width: 20vw;
+    background-color: white;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.friends {
+    width: 20vw;
+    background-color: white;
+    margin: 5px;
+    border-radius: 10px;
 }

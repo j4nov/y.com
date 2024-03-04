@@ -1,61 +1,51 @@
-.create-post {
-    margin: 10px;
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--electric-indigo);
-    border-radius: 10px;
-}
-
-.create-post label {
-    display: flex;
-    text-align: left;
-    margin: 5px;
-    width: 80%;
-    margin: 10px auto;
-    font-size: 16px;
-}
-
-.create-post span {
-    color: red;
-}
-
-.create-post .header {
-    background-color: var(--electric-indigo);
-    border-radius: 7px 7px 0 0;
-    color: white;
-    margin: 0;
+.create-post-body {
+    width: 100vw;
+    height: 90vh;
     display: flex;
     justify-content: center;
-    padding: 7px;
+}
+
+.create-post {
+    margin: 5%;
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.create-post p {
+    text-align: left;
 }
 
 .create-post .form {
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 10px;
+
 }
 
 .create-post input {
     width: 80%;
-    margin: auto;
-    height: 40px;
     border-radius: 5px;
-    border: 1px solid var(--light-gray);
     font-size: 16px;
 }
 
 .create-post button {
-    width: 82%;
+    width: 80%;
     border-radius: 10px;
     border: 0px;
     color: white;
     cursor: pointer;
     font-size: 16px;
-    background-color: var(--electric-indigo);
-    height: 30px;
+    background-color: var(--text-blue);
+    height: 50px;
     margin: 10px auto;
     padding: 0
 }
